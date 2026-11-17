@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Staff capture | Hibird at FITUR</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="css/base.css">
+<style>
+  .staffbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 14px 0; }
+  .staffbar button { border: 1.5px solid var(--navy); background: #fff; color: var(--navy); border-radius: 12px; padding: 10px 14px; font: inherit; font-weight: 700; cursor: pointer; }
+  .pill { background: var(--navy); color: #fff; border-radius: 999px; padding: 6px 12px; font-weight: 700; font-size: 14px; }
+  .pill.warn { background: var(--coral); }
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <span class="brand">Staff · FITUR</span>
+  <button class="lang" id="lang" type="button">Español</button>
+</div></header>
+<main class="wrap">
+  <div class="staffbar">
+    <span class="pill" id="count">0 pending</span>
+    <button type="button" id="sync">Send now</button>
+    <button type="button" id="csv">Export CSV</button>
+    <span class="fine" id="total"></span>
+  </div>
+  <div class="formbox" style="margin-top:0"><h2>Capture</h2><div id="formroot"></div></div>
+</main>
+<script type="module" src="js/staff.js"></script>
+</body>
+</html>

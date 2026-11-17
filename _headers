@@ -1,0 +1,21 @@
+# Cloudflare Pages headers (ignored by GitHub Pages). Rules do not overlap on Cache-Control,
+# because Cloudflare joins repeated values, and a joined Cache-Control can contradict itself.
+
+# Every file: ask search engines to skip it (the pages also carry a noindex tag).
+/*
+  X-Robots-Tag: noindex, nofollow
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Photos, logos and QR codes: keep on the phone for a day. Replaced files can take up to a day to refresh
+# on phones that already have them, so do not change photos in the last 24 hours before the event.
+/assets/*
+  Cache-Control: public, max-age=86400
+
+# Page code: short cache, so a fix reaches phones within minutes.
+/js/*
+  Cache-Control: public, max-age=300
+/css/*
+  Cache-Control: public, max-age=300
+
+# HTML pages and sw.js keep Cloudflare Pages' default (revalidate on every visit), so updates show up fast.

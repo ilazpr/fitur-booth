@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hibird Hospitality Group | Hotels, venues and experiences in Puerto Rico</title>
+<meta name="description" content="Hibird Hospitality Group (HHG) owns and manages 10+ properties and 40 event and meeting venues across Puerto Rico.">
+<meta name="theme-color" content="#10284a">
+<!-- Weak signal in a crowded hall: fetch everything the first screen needs at once, not one file after another. -->
+<link rel="preload" as="image" href="assets/hero.webp">
+<link rel="stylesheet" href="css/base.css">
+<link rel="modulepreload" href="js/page.js">
+<link rel="modulepreload" href="js/content.js">
+<link rel="modulepreload" href="js/i18n.js">
+<link rel="modulepreload" href="js/form.js">
+<link rel="modulepreload" href="js/leads.js">
+<link rel="modulepreload" href="js/routing.js">
+<link rel="modulepreload" href="js/config.js">
+<link rel="modulepreload" href="js/detail.js">
+<link rel="modulepreload" href="js/sheet.js">
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <span class="brand">Hibird Hospitality Group</span>
+  <button class="lang" id="lang" type="button">Español</button>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap" id="foot"></div></footer>
+<script type="module" src="js/page.js"></script>
+<script>
+  // Keep a copy on the phone after the first visit, so a second look (or a bad connection) is instant.
+  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+</script>
+</body>
+</html>

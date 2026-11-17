@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hibird Puerto Rico — Flyer FITUR 2027</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #ccc; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #10284a; }
+  .page { width: 210mm; height: 297mm; margin: 0 auto; background: #fff; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .top { height: 118mm; background: #10284a center/cover; position: relative; color: #fff; }
+  .top::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(16,40,74,.1), rgba(16,40,74,.88)); }
+  .top .in { position: absolute; left: 14mm; right: 14mm; bottom: 12mm; }
+  .bl { font-size: 11pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #ffd2c7; margin-bottom: 3mm; }
+  h1 { font-family: ui-serif, Georgia, serif; font-size: 29pt; line-height: 1.1; margin: 0 0 3mm; }
+  .en { font-size: 15pt; margin: 0; opacity: .95; }
+  .nums { display: flex; justify-content: space-between; padding: 9mm 14mm 4mm; }
+  .nums div { text-align: center; flex: 1; }
+  .nums b { display: block; font-family: ui-serif, Georgia, serif; font-size: 30pt; color: #ff6a4d; line-height: 1; }
+  .nums span { font-size: 10.5pt; display: block; margin-top: 1.5mm; }
+  .nums i { font-style: normal; font-size: 9.5pt; opacity: .75; display: block; }
+  .logos { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5mm 6mm; align-items: center; justify-items: center; padding: 4mm 14mm; border-top: 1px solid #e6dccb; border-bottom: 1px solid #e6dccb; margin: 0 14mm; padding: 6mm 0; }
+  .logos img { max-height: 13mm; max-width: 30mm; object-fit: contain; }
+  .logos span { font-family: ui-serif, Georgia, serif; font-weight: 700; font-size: 11pt; text-align: center; }
+  .also { text-align: center; font-size: 10.5pt; padding: 5mm 14mm 0; line-height: 1.4; }
+  .cta { margin-top: auto; display: flex; align-items: center; gap: 8mm; padding: 8mm 14mm 12mm; }
+  .cta img { width: 42mm; height: 42mm; }
+  .cta p { margin: 0 0 2mm; }
+  .cta .big { font-family: ui-serif, Georgia, serif; font-size: 19pt; font-weight: 700; }
+  .cta .url { font-weight: 700; color: #0f9aa8; font-size: 12pt; }
+  @media print { body { background: #fff; } .page { margin: 0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top" style="background-image:url(assets/video/hook-poster.jpg)"><div class="in">
+    <div class="bl">Hibird Hospitality Group (HHG) · Owner and manager · Puerto Rico</div>
+    <h1 id="hook-es"></h1><p class="en" id="hook-en"></p>
+  </div></div>
+  <div class="nums" id="nums"></div>
+  <div class="logos" id="logos"></div>
+  <div class="also" id="also"></div>
+  <div class="cta">
+    <img src="assets/qr-flyer.svg" alt="QR">
+    <div>
+      <p class="big">Scan and tell us what you need.<br>Escanea y cuéntanos qué buscas.</p>
+      <p class="url" id="url"></p>
+    </div>
+  </div>
+</div>
+<script type="module">
+  import { brands, numbers, copy, venues, tours } from './js/content.js';
+  import { PUBLIC_URL } from './js/config.js';
+  // English is the main line, Spanish underneath.
+  document.getElementById('hook-es').textContent = copy.hook.en;
+  document.getElementById('hook-en').textContent = copy.hook.es;
+  document.getElementById('nums').innerHTML = Object.values(numbers)
+    .map((n) => `<div><b>${n.value}</b><span>${n.label.en}</span><i>${n.label.es}</i></div>`).join('');
+  document.getElementById('logos').innerHTML = brands
+    .map((b) => (b.logo ? `<img src="${b.logo}" alt="${b.name}">` : `<span>${b.name}</span>`)).join('');
+  document.getElementById('also').innerHTML =
+    '<b>Venues · Espacios:</b> ' + venues.map((v) => v.name).join(' · ') + '<br>' +
+    '<b>Tours · Atracciones:</b> ' + tours.map((x) => x.name).join(' · ');
+  document.getElementById('url').textContent = PUBLIC_URL.replace(/^https?:\/\//, '');
+</script>
+</body>
+</html>
